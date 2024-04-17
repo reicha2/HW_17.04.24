@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעורי בית 17.04.24</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS styling */
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn-margin {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" id="textInput" placeholder="Enter text">
+        </div>
+        <button class="btn btn-primary btn-margin" onclick="saveText()">Save Text</button>
+        <button class="btn btn-primary btn-margin" onclick="displayText()">Display Saved Text</button><br><br>
+        Choose your favorite background color:
+        <div class="form-group">
+            <input type="color" class="form-control" id="colorPicker">
+        </div>
+        <button class="btn btn-primary btn-margin" onclick="saveColor()">Save Color</button><br><br>
+        <div id="sTxt"></div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function saveText() {
+            let text = document.getElementById('textInput').value;
+            localStorage.setItem("savedText", text);
+            alert("Text saved successfully!");
+        }
+
+        function displayText() {
+            let savedText = localStorage.getItem("savedText");
+            document.getElementById('sTxt').innerText = savedText;
+        }
+
+        function saveColor() {
+            let color = document.getElementById('colorPicker').value;
+            localStorage.setItem("backgroundColor", color);
+            document.body.style.backgroundColor = color;
+            alert("Color saved successfully!");
+        }
+
+        let savedColor = localStorage.getItem("backgroundColor");
+        if (savedColor) {
+            document.body.style.backgroundColor = savedColor;
+        }
+    </script>
+
+</body>
+
+</html>
